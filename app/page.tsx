@@ -228,14 +228,11 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col justify-between p-5">
-                  <p className="kicker text-accent">{member.index}</p>
-                  <div>
-                    <h3 className="text-2xl font-black tracking-[-0.04em]">
-                      {member.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted">{member.role}</p>
-                  </div>
+                <div className="flex flex-col justify-center p-5">
+                  <h3 className="text-2xl font-black tracking-[-0.04em]">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted">{member.role}</p>
                 </div>
               </article>
             ))}

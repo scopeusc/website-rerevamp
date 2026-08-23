@@ -36,49 +36,41 @@ export const socialWeek = [
 
 export const boardMembers = [
   {
-    index: "01",
     name: "Max Raffel",
     role: "President",
     image: "/images/max-eboard.png",
   },
   {
-    index: "02",
     name: "Anjolie Jain",
     role: "President",
     image: "/images/anjolie-eboard.png",
   },
   {
-    index: "03",
     name: "Anay Mody",
     role: "Director of Outreach",
     image: "/images/anay-eboard.png",
   },
   {
-    index: "04",
     name: "Joyce Ng",
     role: "Co-Director of Curriculum",
     image: "/images/joyce-eboard.png",
   },
   {
-    index: "05",
     name: "Robert Garabetian",
     role: "Co-Director of Curriculum",
     image: "/images/robert-eboard.png",
   },
   {
-    index: "06",
     name: "Katie Hahn",
     role: "Director of Finance",
     image: "/images/katie-eboard.png",
   },
   {
-    index: "07",
     name: "Hannah Lee",
     role: "Director of Events",
     image: "/images/hannah-eboard.png",
   },
   {
-    index: "08",
     name: "Janessa Techathamawong",
     role: "Director of Brand",
     image: "/images/janessa-eboard.png",
@@ -161,6 +153,7 @@ export const application = {
   title: "Applications — Scope USC",
   description:
     "Apply to Scope USC. Tell us who you are, what you want from Scope, and what you’d bring to the community.",
+  submitUrl: "https://usebasin.com/f/5c71777507d3",
   grades: ["Freshman", "Sophomore", "Junior", "Senior", "Master's", "PhD"],
   yesNo: ["Yes", "No"],
   firstGen: ["Yes", "No", "Prefer not to say"],

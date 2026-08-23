@@ -1,26 +1,197 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #19171d;
+  --color-paper: #f6f2fa;
+  --color-mist: #e8e1f2;
+  --color-accent: #7b3ff2;
+  --color-glow: #b99bff;
+  --color-muted: #b9aec8;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-clash);
+  --font-hero: var(--font-cabinet);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+ * One content canvas for every wave: the centered site column,
+ * capped at --wave-canvas-max (1200px). top/left/width are fractions
+ * of that width (cqi). height % is the WaveLayer height. One axis
+ * keeps the image aspect ratio; both axes unlock it (object-fit fill).
+ * Clip on .page-shell keeps overhang from growing the document.
+ */
+.wave-layer {
+  position: relative;
+  container-type: inline-size;
+  --wave-canvas: min(100cqi, var(--wave-canvas-max, 1200px));
+}
+
+.wave-backdrop {
+  position: absolute;
+  top: var(--wave-top);
+  left: calc(50% - var(--wave-canvas) / 2 + var(--wave-left));
+  z-index: -1;
+  width: var(--wave-width);
+  height: var(--wave-height);
+  aspect-ratio: var(--wave-aspect);
+  overflow: visible;
+  pointer-events: none;
+  transform: translate(var(--wave-tx), var(--wave-ty))
+    rotate(var(--wave-rotate)) scale(var(--wave-scale));
+  transform-origin: var(--wave-origin);
+  mix-blend-mode: screen;
+}
+
+.wave-backdrop img {
+  object-fit: var(--wave-fit);
+  opacity: var(--wave-opacity);
+}
+
+@media (min-width: 640px) {
+  .wave-backdrop {
+    top: var(--wave-top-sm);
+    left: calc(50% - var(--wave-canvas) / 2 + var(--wave-left-sm));
+    width: var(--wave-width-sm);
+    height: var(--wave-height-sm);
+    aspect-ratio: var(--wave-aspect-sm);
+    transform: translate(var(--wave-tx-sm), var(--wave-ty-sm))
+      rotate(var(--wave-rotate-sm)) scale(var(--wave-scale-sm));
+  }
+
+  .wave-backdrop img {
+    object-fit: var(--wave-fit-sm);
   }
 }
 
+@media (min-width: 768px) {
+  .wave-backdrop {
+    top: var(--wave-top-md);
+    left: calc(50% - var(--wave-canvas) / 2 + var(--wave-left-md));
+    width: var(--wave-width-md);
+    height: var(--wave-height-md);
+    aspect-ratio: var(--wave-aspect-md);
+    transform: translate(var(--wave-tx-md), var(--wave-ty-md))
+      rotate(var(--wave-rotate-md)) scale(var(--wave-scale-md));
+  }
+
+  .wave-backdrop img {
+    object-fit: var(--wave-fit-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wave-backdrop {
+    top: var(--wave-top-lg);
+    left: calc(50% - var(--wave-canvas) / 2 + var(--wave-left-lg));
+    width: var(--wave-width-lg);
+    height: var(--wave-height-lg);
+    aspect-ratio: var(--wave-aspect-lg);
+    transform: translate(var(--wave-tx-lg), var(--wave-ty-lg))
+      rotate(var(--wave-rotate-lg)) scale(var(--wave-scale-lg));
+  }
+
+  .wave-backdrop img {
+    object-fit: var(--wave-fit-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .wave-backdrop {
+    top: var(--wave-top-xl);
+    left: calc(50% - var(--wave-canvas) / 2 + var(--wave-left-xl));
+    width: var(--wave-width-xl);
+    height: var(--wave-height-xl);
+    aspect-ratio: var(--wave-aspect-xl);
+    transform: translate(var(--wave-tx-xl), var(--wave-ty-xl))
+      rotate(var(--wave-rotate-xl)) scale(var(--wave-scale-xl));
+  }
+
+  .wave-backdrop img {
+    object-fit: var(--wave-fit-xl);
+  }
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+ * Clip decorative overflow to the in-flow page box so waves cannot
+ * grow the document height or width. clip (not hidden) avoids a
+ * nested scroll container, so sticky header still works.
+ */
+.page-shell {
+  position: relative;
+  min-height: 100%;
+  overflow-x: clip;
+  overflow-y: clip;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
+  color: var(--color-paper);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.hero-infinity {
+  animation: bob 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-infinity {
+    animation: none;
+  }
+}
+
+.panel {
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.03);
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.headline {
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+}
+
+select,
+option {
+  background-color: #19171d;
+  color: #f6f2fa;
 }

@@ -84,14 +84,14 @@ export default function Home() {
             parallax={0.15}
           />
           <section id="catalyst" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="lg:order-2">
               <SectionKicker>Catalyst</SectionKicker>
               <h2 className="headline mt-4 text-5xl md:text-6xl">
                 BUILD A CAREER IN TECH
               </h2>
             </div>
-            <div>
+            <div className="lg:order-1">
               <p className="text-lg leading-[1.42] text-muted">
                 We want our members to feel confident taking the next step in
                 their careers. Through Catalyst, you will get hands-on support
@@ -111,7 +111,7 @@ export default function Home() {
         <section id="social" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <SectionKicker tone="glow">Social</SectionKicker>
+              <SectionKicker>Social</SectionKicker>
               <h2 className="headline mt-4 text-5xl md:text-6xl">
                 FIND YOUR PEOPLE
               </h2>
@@ -169,18 +169,24 @@ export default function Home() {
                 something cool with your newfound skills.
               </p>
               <p className="kicker mt-8 text-glow">Past topics include:</p>
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {topics.map((topic) => (
                   <div
-                    key={topic}
-                    className="panel rounded-2xl px-4 py-5 text-lg font-bold tracking-[-0.03em]"
+                    key={topic.name}
+                    className="panel flex min-w-0 items-center gap-2 rounded-2xl px-3 py-4 text-base font-bold tracking-[-0.03em]"
                   >
-                    {topic}
+                    <img
+                      src={topic.logo}
+                      alt=""
+                      className={`h-6 w-6 shrink-0 object-contain${
+                        "invert" in topic && topic.invert
+                          ? " brightness-0 invert"
+                          : ""
+                      }`}
+                    />
+                    <span className="min-w-0 leading-tight">{topic.name}</span>
                   </div>
                 ))}
-                <div className="panel rounded-2xl px-4 py-5 text-lg font-bold tracking-[-0.03em] sm:col-span-4">
-                  Team projects + hackathons
-                </div>
               </div>
             </div>
           </div>

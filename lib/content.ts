@@ -15,13 +15,27 @@ export const navLinks = [
 ] as const;
 
 export const topics = [
-  "Kubernetes",
-  "Docker",
-  "React",
-  "Node.js",
-  "Swift",
-  "Go",
-  "Next.js",
+  {
+    name: "Kubernetes",
+    logo: "/images/curriculum/Kubernetes_logo_without_workmark.svg",
+  },
+  {
+    name: "Docker",
+    logo: "/images/curriculum/Ionicons_logo-docker.svg",
+    invert: true,
+  },
+  { name: "React", logo: "/images/curriculum/React-icon.svg" },
+  { name: "Node.js", logo: "/images/curriculum/nodejs-icon-svgrepo-com.svg" },
+  {
+    name: "Swift",
+    logo: "/images/curriculum/swift-programming-language-icon.svg",
+  },
+  { name: "Go", logo: "/images/curriculum/Go_Logo_Blue.svg" },
+  {
+    name: "Next.js",
+    logo: "/images/curriculum/next_js_logo_icon_145038.svg",
+    invert: true,
+  },
 ] as const;
 
 export const socialWeek = [

@@ -17,6 +17,7 @@
  * capped at --wave-canvas-max (1200px). top/left/width are fractions
  * of that width (cqi). height % is the WaveLayer height. One axis
  * keeps the image aspect ratio; both axes unlock it (object-fit fill).
+ * --wave-parallax-strength is a scroll-lag factor (0 = locked).
  * Clip on .page-shell keeps overhang from growing the document.
  */
 .wave-layer {
@@ -35,10 +36,16 @@
   aspect-ratio: var(--wave-aspect);
   overflow: visible;
   pointer-events: none;
+  /* translate applies before transform, so parallax stays vertical after rotate */
+  translate: 0 var(--wave-parallax-y, 0px);
   transform: translate(var(--wave-tx), var(--wave-ty))
     rotate(var(--wave-rotate)) scale(var(--wave-scale));
   transform-origin: var(--wave-origin);
   mix-blend-mode: screen;
+}
+
+.wave-backdrop--parallax {
+  will-change: translate;
 }
 
 .wave-backdrop img {
@@ -53,6 +60,7 @@
     width: var(--wave-width-sm);
     height: var(--wave-height-sm);
     aspect-ratio: var(--wave-aspect-sm);
+    --wave-parallax-strength: var(--wave-parallax-strength-sm);
     transform: translate(var(--wave-tx-sm), var(--wave-ty-sm))
       rotate(var(--wave-rotate-sm)) scale(var(--wave-scale-sm));
   }
@@ -69,6 +77,7 @@
     width: var(--wave-width-md);
     height: var(--wave-height-md);
     aspect-ratio: var(--wave-aspect-md);
+    --wave-parallax-strength: var(--wave-parallax-strength-md);
     transform: translate(var(--wave-tx-md), var(--wave-ty-md))
       rotate(var(--wave-rotate-md)) scale(var(--wave-scale-md));
   }
@@ -85,6 +94,7 @@
     width: var(--wave-width-lg);
     height: var(--wave-height-lg);
     aspect-ratio: var(--wave-aspect-lg);
+    --wave-parallax-strength: var(--wave-parallax-strength-lg);
     transform: translate(var(--wave-tx-lg), var(--wave-ty-lg))
       rotate(var(--wave-rotate-lg)) scale(var(--wave-scale-lg));
   }
@@ -101,6 +111,7 @@
     width: var(--wave-width-xl);
     height: var(--wave-height-xl);
     aspect-ratio: var(--wave-aspect-xl);
+    --wave-parallax-strength: var(--wave-parallax-strength-xl);
     transform: translate(var(--wave-tx-xl), var(--wave-ty-xl))
       rotate(var(--wave-rotate-xl)) scale(var(--wave-scale-xl));
   }
@@ -168,6 +179,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-infinity {
     animation: none;
+  }
+
+  .wave-backdrop {
+    translate: none;
+  }
+
+  .wave-backdrop--parallax {
+    will-change: auto;
   }
 }
 

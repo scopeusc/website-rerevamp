@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 const WAVE_ASPECT = "2400 / 1824";
 const BREAKPOINTS = ["base", "sm", "md", "lg", "xl"] as const;
@@ -69,6 +71,12 @@ export type WaveBackdropProps = {
   /** Uniform extra scale. Rotate and scale share transform-origin. */
   scale?: WaveBreakpoint;
   rotate?: WaveBreakpoint;
+  /**
+   * Scroll lag vs the page, in screen space (stays vertical after rotate).
+   * `0` locks to layout. `0.2` is subtle, `0.45` is strong, negative reverses.
+   * Accepts `{ base, sm, md, lg, xl }`.
+   */
+  parallax?: WaveBreakpoint<number>;
   origin?: string;
   opacity?: number;
   priority?: boolean;
@@ -114,6 +122,72 @@ function asLayerHeight(value: string | number) {
   return typeof value === "number" ? `${value}%` : value.trim();
 }
 
+function isActiveParallax(map: BreakpointMap<number>) {
+  return BREAKPOINTS.some((breakpoint) => {
+    const value = cascade(map, breakpoint);
+    return value !== undefined && value !== 0;
+  });
+}
+
+function useWaveParallax(enabled: boolean) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !enabled) return;
+
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+
+    const update = () => {
+      if (motion.matches) {
+        el.style.setProperty("--wave-parallax-y", "0px");
+        return;
+      }
+
+      const strength =
+        Number.parseFloat(
+          getComputedStyle(el).getPropertyValue("--wave-parallax-strength"),
+        ) || 0;
+
+      if (strength === 0) {
+        el.style.setProperty("--wave-parallax-y", "0px");
+        return;
+      }
+
+      const applied =
+        Number.parseFloat(el.style.getPropertyValue("--wave-parallax-y")) || 0;
+      const rect = el.getBoundingClientRect();
+      const viewMid = window.innerHeight / 2;
+      const elMid = rect.top + rect.height / 2 - applied;
+      el.style.setProperty(
+        "--wave-parallax-y",
+        `${(elMid - viewMid) * strength}px`,
+      );
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    motion.addEventListener("change", onScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      motion.removeEventListener("change", onScroll);
+      el.style.removeProperty("--wave-parallax-y");
+    };
+  }, [enabled]);
+
+  return ref;
+}
+
 export function WaveLayer({
   children,
   className = "",
@@ -143,6 +217,7 @@ export function WaveBackdrop({
   height,
   scale = 1,
   rotate = "0deg",
+  parallax = 0,
   origin = "center center",
   opacity = 0.4,
   priority = false,
@@ -156,6 +231,9 @@ export function WaveBackdrop({
   const heightMap = toMap(height);
   const scaleMap = toMap(scale);
   const rotateMap = toMap(rotate);
+  const parallaxMap = toMap(parallax);
+  const parallaxEnabled = isActiveParallax(parallaxMap);
+  const parallaxRef = useWaveParallax(parallaxEnabled);
 
   const vars: Record<string, string> = {
     "--wave-opacity": String(opacity),
@@ -172,6 +250,7 @@ export function WaveBackdrop({
     const usedHeight = cascade(heightMap, breakpoint);
     const usedScale = cascade(scaleMap, breakpoint) ?? 1;
     const usedRotate = cascade(rotateMap, breakpoint) ?? "0deg";
+    const usedParallax = cascade(parallaxMap, breakpoint) ?? 0;
     const hasWidth = usedWidth !== undefined;
     const hasHeight = usedHeight !== undefined;
     const stretch = hasWidth && hasHeight;
@@ -190,11 +269,13 @@ export function WaveBackdrop({
     vars[`--wave-fit${suffix}`] = stretch ? "fill" : "contain";
     vars[`--wave-scale${suffix}`] = String(usedScale);
     vars[`--wave-rotate${suffix}`] = asAngle(usedRotate);
+    vars[`--wave-parallax-strength${suffix}`] = String(usedParallax);
   }
 
   return (
     <div
-      className={`wave-backdrop ${className}`.trim()}
+      ref={parallaxRef}
+      className={`wave-backdrop ${parallaxEnabled ? "wave-backdrop--parallax" : ""} ${className}`.trim()}
       aria-hidden="true"
       style={vars as CSSProperties}
     >

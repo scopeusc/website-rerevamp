@@ -33,6 +33,7 @@ export default function Home() {
               top={{ base: "20%", sm: "10%", md: "10%", lg: "10%", xl: "10%" }}
               centerX={{ base: "40%", sm: "40%", md: "40%", lg: "40%", xl: "40%" }}
               width={{ base: "200%", sm: "180%", md: "180%", lg: "180%", xl: "180%" }}
+              parallax={0.15}
               priority
             />
             <section className="relative z-10">
@@ -116,6 +117,7 @@ export default function Home() {
             centerX={{ base: "-10vw", sm: "0", md: "0", lg: "0", xl: "0" }}
             rotate="90deg"
             height={{ base: "150vw", sm: "100vw", md: "100vw", lg: "80vw", xl: "80vw" }}
+            parallax={0.15}
           />
           <section id="catalyst" className="relative z-10 mx-auto max-w-[1200px] px-5 py-10 md:px-8">
           <SectionKicker tone="glow">02 / Grow + belong</SectionKicker>
@@ -194,6 +196,7 @@ export default function Home() {
               centerX={{ base: "100%", sm: "100%", md: "100%", lg: "100%", xl: "100%" }}
               rotate="-90deg"
               height={{ base: "150vw", sm: "100vw", md: "100vw", lg: "80vw", xl: "80vw" }}
+              parallax={0.28}
             />
         <section id="board" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
           <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -283,6 +286,7 @@ export default function Home() {
             top={{ base: "10%", sm: "10%", md: "10%", lg: "10%", xl: "10%" }}
             left={{ base: "-40vw", sm: "-40vw", md: "-40vw", lg: "-40vw", xl: "-40vw" }}
             width={{ base: "140vw", sm: "140vw", md: "140vw", lg: "140vw", xl: "140vw" }}
+            parallax={0.1}
           />
         <section id="alumni" className="relative z-10 py-16">
           <div className="mx-auto max-w-[1200px] px-5 md:px-8">

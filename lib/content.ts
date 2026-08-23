@@ -96,14 +96,20 @@ export const faqs = [
 ] as const;
 
 export const alumniCompanies = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Meta",
-  "Bloomberg",
-  "Stripe",
-  "Disney",
-  "Salesforce",
+  { name: "Google", logo: "/images/alumni/Google_2015_logo.svg" },
+  {
+    name: "Microsoft",
+    logo: "/images/alumni/microsoft-logo-svgrepo-com.svg?v=2",
+    scale: "width",
+  },
+  { name: "Amazon", logo: "/images/alumni/Amazon_logo.svg?v=2" },
+  { name: "Bloomberg", logo: "/images/alumni/Bloomberg_logo.svg", invert: true },
+  { name: "Stripe", logo: "/images/alumni/Stripe_Logo,_revised_2016.svg" },
+  { name: "Disney", logo: "/images/alumni/Disney_wordmark.svg", invert: true },
+  { name: "Salesforce", logo: "/images/alumni/Salesforce.com_logo.svg", size: "tall" },
+  { name: "Snapchat", logo: "/images/alumni/snapchat-logo.png?v=2" },
+  { name: "Coinbase", logo: "/images/alumni/Coinbase.svg" },
+  { name: "LinkedIn", logo: "/images/alumni/LinkedIn_Logo.svg?v=2" },
 ] as const;
 
 export const sponsorship = {

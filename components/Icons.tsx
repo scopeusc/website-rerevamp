@@ -1,4 +1,10 @@
-export function ArrowIcon({ className }: { className?: string }) {
+export function ArrowIcon({
+  className,
+  direction = "up",
+}: {
+  className?: string;
+  direction?: "up" | "down";
+}) {
   return (
     <svg
       className={className}
@@ -7,7 +13,11 @@ export function ArrowIcon({ className }: { className?: string }) {
       aria-hidden="true"
     >
       <path
-        d="M7 17L17 7M17 7H9.5M17 7V14.5"
+        d={
+          direction === "down"
+            ? "M7 7L17 17M17 17H9.5M17 17V9.5"
+            : "M7 17L17 7M17 7H9.5M17 7V14.5"
+        }
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"

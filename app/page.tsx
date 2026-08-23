@@ -53,8 +53,8 @@ export default function Home() {
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <TextLink href="/applications">Join Scope</TextLink>
-                  <TextLink href="/#curriculum" variant="ghost">
-                    Explore the programs ↘
+                  <TextLink href="/#catalyst" variant="ghost" arrow="down">
+                    Explore the programs
                   </TextLink>
                 </div>
                 <div className="mt-10">
@@ -75,12 +75,87 @@ export default function Home() {
           </section>
           </WaveLayer>
 
+        <WaveLayer>
+          <WaveBackdrop
+            centerY={{ base: "100%", sm: "100%", md: "100%", lg: "160%", xl: "160%" }}
+            centerX={{ base: "-10vw", sm: "0", md: "0", lg: "0", xl: "0" }}
+            rotate="90deg"
+            height={{ base: "150vw", sm: "100vw", md: "100vw", lg: "80vw", xl: "80vw" }}
+            parallax={0.15}
+          />
+          <section id="catalyst" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <SectionKicker>Catalyst</SectionKicker>
+              <h2 className="headline mt-4 text-5xl md:text-6xl">
+                BUILD A CAREER IN TECH
+              </h2>
+            </div>
+            <div>
+              <p className="text-lg leading-[1.42] text-muted">
+                We want our members to feel confident taking the next step in
+                their careers. Through Catalyst, you will get hands-on support
+                throughout the recruiting process, from strengthening your
+                application to preparing for interviews, while learning from
+                other Scope members who have been through it themselves.
+              </p>
+              <p className="kicker mt-8 text-glow">Opportunities</p>
+              <p className="mt-3 text-sm font-semibold leading-6">
+                Resume Reviews · Mock Interviews · Recruiting Support · Career
+                Workshops · Tech Talks
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="social" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <SectionKicker tone="glow">Social</SectionKicker>
+              <h2 className="headline mt-4 text-5xl md:text-6xl">
+                FIND YOUR PEOPLE
+              </h2>
+            </div>
+            <div>
+              <p className="text-lg leading-[1.42] text-muted">
+                Retreats, side quests, and the kind of weekly rituals that turn
+                classmates into your people.
+              </p>
+              <p className="mt-6 text-lg leading-[1.42] text-muted">
+                We believe that getting to know the people you build with is
+                just as important as the building itself. Throughout the
+                semester, we host weekly socials so you all can spend time
+                together outside of projects, get to know other members, and
+                become part of the Scope community.
+              </p>
+              <p className="kicker mt-8 text-glow">Our weeks</p>
+              <p className="mt-3 text-sm font-semibold leading-6">
+                {socialWeek.join(" · ")}
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {["01", "02"].map((n) => (
+              <div
+                key={n}
+                className="panel flex min-h-56 items-end rounded-[28px] p-6"
+              >
+                <div>
+                  <p className="kicker text-glow">Cohort photo / {n}</p>
+                  <p className="mt-3 text-muted">Drop a cohort moment here.</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        </WaveLayer>
+
         <section id="curriculum" className="mx-auto max-w-[1200px] px-5 py-20 md:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <SectionKicker>01 / Curriculum</SectionKicker>
+              <SectionKicker>Curriculum</SectionKicker>
               <h2 className="headline mt-4 text-5xl md:text-6xl">
-                LEARN WHAT’S NEXT.
+                LEARN WHAT’S NEXT
               </h2>
             </div>
             <div>
@@ -112,84 +187,6 @@ export default function Home() {
         </section>
 
         <WaveLayer>
-          <WaveBackdrop
-            centerY={{ base: "100%", sm: "100%", md: "100%", lg: "140%", xl: "140%" }}
-            centerX={{ base: "-10vw", sm: "0", md: "0", lg: "0", xl: "0" }}
-            rotate="90deg"
-            height={{ base: "150vw", sm: "100vw", md: "100vw", lg: "80vw", xl: "80vw" }}
-            parallax={0.15}
-          />
-          <section id="catalyst" className="relative z-10 mx-auto max-w-[1200px] px-5 py-10 md:px-8">
-          <SectionKicker tone="glow">02 / Grow + belong</SectionKicker>
-          <h2 className="headline mt-4 max-w-3xl text-5xl md:text-6xl">
-            BUILD FOR WHAT’S NEXT.
-          </h2>
-          <p className="mt-4 text-muted">
-            A little more confidence. A lot more momentum.
-          </p>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <article className="panel rounded-[28px] p-6 md:p-8">
-              <SectionKicker>02 / Catalyst</SectionKicker>
-              <h3 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-                Catalyst
-              </h3>
-              <p className="mt-4 text-base leading-[1.42] text-muted">
-                We want our members to feel confident taking the next step in
-                their careers. Through Catalyst, you will get hands-on support
-                throughout the recruiting process, from strengthening your
-                application to preparing for interviews, while learning from
-                other Scope members who have been through it themselves.
-              </p>
-              <p className="kicker mt-8 text-glow">Opportunities</p>
-              <p className="mt-3 text-sm font-semibold leading-6">
-                Resume Reviews · Mock Interviews · Recruiting Support · Career
-                Workshops · Tech Talks
-              </p>
-            </article>
-            <article
-              id="social"
-              className="relative overflow-hidden rounded-[28px] border border-white/12 p-6 md:p-8"
-            >
-              <div className="relative">
-                <SectionKicker tone="glow">03 / Social</SectionKicker>
-                <h3 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-                  FIND YOUR PEOPLE.
-                </h3>
-                <p className="mt-4 text-base leading-[1.42] text-muted">
-                  Retreats, side quests, and the kind of weekly rituals that turn
-                  classmates into your people.
-                </p>
-                <p className="kicker mt-8 text-glow">Our weeks</p>
-                <p className="mt-3 text-sm font-semibold leading-6">
-                  {socialWeek.join(" · ")}
-                </p>
-                <p className="mt-6 text-base leading-[1.42] text-muted">
-                  We believe that getting to know the people you build with is
-                  just as important as the building itself. Throughout the
-                  semester, we host weekly socials so you all can spend time
-                  together outside of projects, get to know other members, and
-                  become part of the Scope community.
-                </p>
-              </div>
-            </article>
-          </div>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {["01", "02"].map((n) => (
-              <div
-                key={n}
-                className="panel flex min-h-56 items-end rounded-[28px] p-6"
-              >
-                <div>
-                  <p className="kicker text-glow">Cohort photo / {n}</p>
-                  <p className="mt-3 text-muted">Drop a cohort moment here.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        </WaveLayer>
-
-        <WaveLayer>
             <WaveBackdrop
               className="md:hidden"
               centerY={{ base: "100%", sm: "100%", md: "100%", lg: "140%", xl: "140%" }}
@@ -201,9 +198,9 @@ export default function Home() {
         <section id="board" className="relative z-10 mx-auto max-w-[1200px] px-5 py-20 md:px-8">
           <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <SectionKicker>04 / The board</SectionKicker>
+              <SectionKicker>The board</SectionKicker>
               <h2 className="headline mt-4 max-w-xl text-5xl md:text-6xl">
-                MEET THE PEOPLE BEHIND SCOPE.
+                MEET THE PEOPLE BEHIND SCOPE
               </h2>
             </div>
             <div className="relative hidden h-24 w-40 md:block">
@@ -244,9 +241,9 @@ export default function Home() {
         </WaveLayer>
 
         <section id="faq" className="mx-auto max-w-[1200px] px-5 py-16 md:px-8">
-          <SectionKicker>05 / Frequently asked questions</SectionKicker>
+          <SectionKicker>Frequently asked questions</SectionKicker>
           <h2 className="headline mt-4 text-5xl md:text-6xl">
-            WHAT YOU SHOULD KNOW.
+            WHAT YOU SHOULD KNOW
           </h2>
           <p className="mt-4 mb-8 text-muted">
             Everything you’re probably wondering about the club.
@@ -257,7 +254,7 @@ export default function Home() {
         <section id="sponsor" className="mx-auto max-w-[1200px] px-5 py-16 md:px-8">
           <div className="panel grid overflow-hidden rounded-[32px] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-6 md:p-10">
-              <SectionKicker tone="glow">Sponsorship deck / Fall ’26</SectionKicker>
+              <SectionKicker tone="glow">Sponsorship</SectionKicker>
               <h2 className="headline mt-4 text-4xl md:text-5xl">
                 PARTNER WITH SCOPE USC
               </h2>
@@ -291,14 +288,14 @@ export default function Home() {
         <section id="alumni" className="relative z-10 py-16">
           <div className="mx-auto max-w-[1200px] px-5 md:px-8">
             <div className="mb-8 flex items-center gap-3">
-              <SectionKicker>05 / Alumni network</SectionKicker>
+              <SectionKicker>Alumni network</SectionKicker>
             </div>
             <h2 className="headline max-w-3xl text-5xl md:text-6xl">
-              WHERE SCOPE CAN TAKE YOU.
+              WHERE SCOPE CAN TAKE YOU
             </h2>
             <p className="mt-4 mb-10 max-w-2xl text-lg leading-[1.42] text-muted">
               Scope alumni take the energy with them into teams, products, and
-              companies they’re genuinely excited about.
+              companies like...
             </p>
           </div>
           <LogoMarquee />

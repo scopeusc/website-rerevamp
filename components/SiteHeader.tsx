@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks } from "@/lib/content";
+import { scrollToCurrentHash } from "@/lib/scroll-to-hash";
 import { TextLink } from "@/components/TextLink";
 
 export function SiteHeader({
@@ -17,8 +18,18 @@ export function SiteHeader({
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-4 md:px-8">
-        <Link href="/" className="text-[15px] font-bold tracking-[0.02em]">
-          SCOPE / USC
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-[15px] font-bold tracking-[0.02em]"
+        >
+          <img
+            src="/favicon.ico"
+            alt=""
+            width={28}
+            height={28}
+            className="size-7 object-contain"
+          />
+          SCOPE
         </Link>
 
         {backHref ? (
@@ -35,6 +46,7 @@ export function SiteHeader({
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => scrollToCurrentHash(link.href)}
                   className="transition hover:text-paper"
                 >
                   {link.label}
@@ -64,7 +76,10 @@ export function SiteHeader({
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  scrollToCurrentHash(link.href);
+                  setOpen(false);
+                }}
                 className="hover:text-paper"
               >
                 {link.label}

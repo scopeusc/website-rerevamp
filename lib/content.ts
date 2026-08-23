@@ -1,16 +1,16 @@
 export const site = {
   name: "Scope USC",
-  title: "Scope USC — Computer Science Club",
+  title: "Scope",
   description:
     "Learn modern technologies, build real projects, and prepare for a career in tech with Scope at USC.",
   email: "hello@scopeusc.com",
-  applicationsCloseAt: "2026-09-16T03:59:00.000Z",
+  applicationsCloseAt: "2026-09-04T06:59:00.000Z",
 } as const;
 
 export const navLinks = [
-  { href: "/#curriculum", label: "Curriculum" },
   { href: "/#catalyst", label: "Catalyst" },
   { href: "/#social", label: "Social" },
+  { href: "/#curriculum", label: "Curriculum" },
   { href: "/#board", label: "Board" },
 ] as const;
 
@@ -36,14 +36,14 @@ export const socialWeek = [
 
 export const boardMembers = [
   {
-    name: "Max Raffel",
-    role: "President",
-    image: "/images/max-eboard.png",
-  },
-  {
     name: "Anjolie Jain",
     role: "President",
     image: "/images/anjolie-eboard.png",
+  },
+  {
+    name: "Max Raffel",
+    role: "President",
+    image: "/images/max-eboard.png",
   },
   {
     name: "Anay Mody",
@@ -79,19 +79,38 @@ export const boardMembers = [
 
 export const faqs = [
   {
-    question: "Who can join Scope?",
+    question: "What makes Scope different from other organizations?",
+    answer:
+      "We are an informal club that takes pride in building a community that is excited to ideate and create together. Scope is not an entrepreneurial club; it is a building org. This community is a trampoline that will launch meaningful ideas and relationships into the future.",
+  },
+  {
+    question: "What does Scope look for in applicants?",
+    answer:
+      "Scope looks for passionate people who love technology and building things. Since Scope consists of 2 pillars: learning and community, we look for applicants who value and will participate in both of these aspects.",
+  },
+  {
+    question: "What does the application process look like?",
+    answer:
+      "Application - At the beginning of each semester we release an application to hear a little bit about your experience and why you want to join Scope.\n\nInterview - Get to know Scope e-board while we get to know you! The goal of this stage is to assess how you would fit in with our Scope family.\n\nDecision - If you are admitted, yay! If not, that doesn't mean you weren't right for the club, it's that we didn't have the space for you yet. But please, please reapply in future semesters!",
+  },
+  {
+    question: "Who is eligible to apply?",
     answer:
       "Scope is open to undergraduate USC students from all majors. While many of our members are computer science students or people interested in the technology field, we encourage and welcome members from other sectors, and love what their unique experiences and insights bring to the club.",
   },
   {
-    question: "Do I need prior experience?",
+    question: "Do I need coding experience to join?",
     answer:
       "Since our curriculum does require a basic foundation of coding, we require this of our applicants as well. This means you have seen and touched code before whether that be through a class, personal project, internship, etc. Please elaborate on your application.",
   },
   {
-    question: "What happens after I apply?",
+    question: "How many members does Scope take each semester?",
+    answer: "Around 30.",
+  },
+  {
+    question: "What is the time commitment?",
     answer:
-      "Application - At the beginning of each semester we release an application to hear a little bit about your experience and why you want to join Scope. Interview - Get to know Scope e-board while we get to know you! The goal of this stage is to assess how you would fit in with our Scope family. Decision - If you are admitted, yay! If not, that doesn't mean you weren't right for the club, it's that we didn't have the space for you yet. But please, please reapply in future semesters!",
+      "We have two mandatory weekly meetings (typically Tuesdays and Thursdays). In addition, Scope members typically spend 2-4 hours per week participating in club-related activities like social events and projects.",
   },
 ] as const;
 

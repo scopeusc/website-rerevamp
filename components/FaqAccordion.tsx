@@ -25,7 +25,7 @@ export function FaqAccordion() {
               </span>
             </div>
             {isOpen ? (
-              <p className="mt-4 max-w-3xl text-base leading-[1.42] text-muted">
+              <p className="mt-4 max-w-3xl whitespace-pre-line text-base leading-[1.42] text-muted">
                 {faq.answer}
               </p>
             ) : null}

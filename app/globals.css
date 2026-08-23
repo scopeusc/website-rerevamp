@@ -124,6 +124,8 @@
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
+  /* Keep hash targets below the sticky header instead of under it. */
+  scroll-padding-top: 5.5rem;
 }
 
 body {

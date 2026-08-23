@@ -111,10 +111,47 @@ function WordArea({
 export function ApplicationForm() {
   const [submitted, setSubmitted] = useState(false);
   const [wantsCatalyst, setWantsCatalyst] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitError(null);
+
+    const form = event.currentTarget;
+    const resume = form.elements.namedItem("pdf");
+    if (resume instanceof HTMLInputElement && resume.files?.[0]) {
+      const file = resume.files[0];
+      const isPdf =
+        file.type === "application/pdf" ||
+        file.name.toLowerCase().endsWith(".pdf");
+      if (!isPdf) {
+        setSubmitError("Resume must be a PDF.");
+        return;
+      }
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(application.submitUrl, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Submission failed with status ${response.status}`);
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "We couldn’t send your application. Check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -136,7 +173,14 @@ export function ApplicationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-12">
+    <form
+      action={application.submitUrl}
+      method="POST"
+      encType="multipart/form-data"
+      acceptCharset="UTF-8"
+      onSubmit={onSubmit}
+      className="flex flex-col gap-12"
+    >
       <section>
         <p className="kicker text-accent">01 / About you</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
@@ -261,7 +305,7 @@ export function ApplicationForm() {
             <input
               required
               type="file"
-              name="resume"
+              name="pdf"
               accept="application/pdf,.pdf"
               className={`${fieldClass} file:mr-3 file:rounded-full file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-paper`}
             />
@@ -312,16 +356,20 @@ export function ApplicationForm() {
           </Field>
           <ChoiceField
             legend="First-gen"
-            name="firstGen"
+            name="first-gen"
             options={application.firstGen}
             required
           />
         </div>
+        {submitError ? (
+          <p className="mt-6 text-sm text-glow">{submitError}</p>
+        ) : null}
         <button
           type="submit"
-          className="mt-8 inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition hover:bg-[#6d34e0]"
+          disabled={isSubmitting}
+          className="mt-8 inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition hover:bg-[#6d34e0] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Submit application
+          {isSubmitting ? "Submitting…" : "Submit application"}
         </button>
       </section>
     </form>

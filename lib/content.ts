@@ -98,16 +98,12 @@ export const faqs = [
 export const alumniCompanies = [
   "Google",
   "Microsoft",
-  "Apple",
   "Amazon",
   "Meta",
-  "OpenAI",
-  "Figma",
+  "Bloomberg",
   "Stripe",
-  "Uber",
+  "Disney",
   "Salesforce",
-  "Netflix",
-  "Notion",
 ] as const;
 
 export const sponsorship = {

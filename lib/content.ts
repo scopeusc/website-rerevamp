@@ -160,10 +160,20 @@ export const sponsorship = {
 export const application = {
   title: "Applications — Scope USC",
   description:
-    "Apply to Scope USC. Questions are being finalized; use this page as the application form structure.",
-  majors: ["Computer Science", "Engineering", "Other"],
-  statuses: ["Undergraduate", "Graduate", "Other"],
-  codingLevels: ["New to coding", "Some experience", "Experienced"],
-  interests: ["Curriculum", "Catalyst", "Social"],
-  years: ["2026", "2027", "2028", "2029", "2030"],
+    "Apply to Scope USC. Tell us who you are, what you want from Scope, and what you’d bring to the community.",
+  grades: ["Freshman", "Sophomore", "Junior", "Senior", "Master's", "PhD"],
+  yesNo: ["Yes", "No"],
+  firstGen: ["Yes", "No", "Prefer not to say"],
+  ethnicities: [
+    "American Indian or Alaska Native",
+    "Asian",
+    "Black or African American",
+    "Hispanic or Latino",
+    "Middle Eastern or North African",
+    "Native Hawaiian or Other Pacific Islander",
+    "White",
+    "Two or more races",
+    "Prefer not to say",
+    "Other",
+  ],
 } as const;

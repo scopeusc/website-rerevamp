@@ -19,9 +19,8 @@ export default function ApplicationsPage() {
           MAKE YOUR NEXT MOVE.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-[1.42] text-muted">
-          We’re putting the finishing touches on this application. The questions
-          below are placeholders for now, but the vibe is simple: tell us who you
-          are and what you want to build.
+          Tell us who you are, what you’re hoping to find in Scope, and what
+          you’d want to bring to the community.
         </p>
         <p className="kicker mt-8 text-accent">Applications open soon</p>
         <div className="mt-12">

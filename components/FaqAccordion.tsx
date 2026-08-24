@@ -4,7 +4,7 @@ import { useState } from "react";
 import { faqs } from "@/lib/content";
 
 export function FaqAccordion() {
-  const [open, setOpen] = useState(2);
+  const [open, setOpen] = useState(-1);
 
   return (
     <div className="flex flex-col gap-3">

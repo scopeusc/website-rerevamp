@@ -1,11 +1,3 @@
-import { DiscordIcon, GithubIcon, InstagramIcon } from "@/components/Icons";
-
-const socials = [
-  { name: "GitHub", Icon: GithubIcon },
-  { name: "Discord", Icon: DiscordIcon },
-  { name: "Instagram", Icon: InstagramIcon },
-];
-
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10">
@@ -13,13 +5,19 @@ export function SiteFooter() {
         <p className="text-[12px] font-medium tracking-[0.08em] text-muted">
           © 2026 SCOPE USC · LEARN. BUILD. CODE.
         </p>
-        <div className="flex items-center gap-4 text-muted">
-          {socials.map(({ name, Icon }) => (
-            <span key={name} aria-label={name} className="inline-flex">
-              <Icon className="size-4" />
-            </span>
-          ))}
-        </div>
+        <a
+          href="https://www.instagram.com/scopeusc/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="inline-flex opacity-80 transition hover:opacity-100"
+        >
+          <img
+            src="/images/instagram-logo-facebook-2-svgrepo-com.svg"
+            alt=""
+            className="size-4 brightness-0 invert"
+          />
+        </a>
       </div>
     </footer>
   );

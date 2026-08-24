@@ -20,7 +20,7 @@ export default function ApplicationsPage() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-[1.42] text-muted">
           Tell us who you are, what you’re hoping to find in Scope, and what
-          you’d want to bring to the community.
+          you’d want to bring to the community. We recommend drafting responses in a separate document rather than directly into the application form.
         </p>
         <div className="mt-12">
           <ApplicationForm />

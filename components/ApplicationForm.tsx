@@ -301,7 +301,7 @@ export function ApplicationForm() {
               className={fieldClass}
             />
           </Field>
-          <Field label="Resume drop" hint="PDF only.">
+          <Field label="Resume drop" hint="PDF only. If you have issues uploading, try a different browser.">
             <input
               required
               type="file"

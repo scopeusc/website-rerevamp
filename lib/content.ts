@@ -199,7 +199,7 @@ export const application = {
   title: "Applications — Scope USC",
   description:
     "Apply to Scope USC. Tell us who you are, what you want from Scope, and what you’d bring to the community.",
-  submitUrl: "https://usebasin.com/f/5c71777507d3",
+  submitUrl: "https://usebasin.com/f/0b5f9bf0068b",
   grades: ["Freshman", "Sophomore", "Junior", "Senior", "Master's", "PhD"],
   yesNo: ["Yes", "No"],
   firstGen: ["Yes", "No", "Prefer not to say"],

@@ -239,10 +239,10 @@ export function ApplicationForm() {
           <Field label="What’s something you’ve been especially excited or interested about lately? It can be big, small, serious, or completely pointless. Tell us about it and why it has your attention.">
             <WordArea name="unexpectedlyYou" words={200} required />
           </Field>
-          <Field label="Imagine you’re given an empty room in USC and could transform it any way you want so that people would use it. What do you do?">
+          <Field label="USC gives you an empty building and lets you turn it into whatever you want. What do you create and how do you transform it so that people would use it?">
             <WordArea name="lifeBetter" words={150} required />
           </Field>
-          <Field label="Please briefly describe your experience with software frameworks and web/mobile development. If you have no experience yet, tell us what you’re excited to learn.">
+          <Field label="Please briefly describe your experience with software frameworks and skills. If you have no experience yet, tell us what you’re excited to learn.">
             <WordArea name="devExp" required rows={5} />
           </Field>
         </div>
@@ -264,10 +264,10 @@ export function ApplicationForm() {
           />
           {wantsCatalyst === "Yes" ? (
             <>
-              <Field label="Why do you want to join Catalyst?">
+              <Field label="Why is Catalyst the right fit for you?">
                 <WordArea name="whyCatalyst" required rows={5} />
               </Field>
-              <Field label="Imagine Catalyst goes really well for you this semester. By the end of it, what’s something you’d be able to do, understand, or feel more confident about that you can’t today?">
+              <Field label="What’s something career-related that you currently avoid, struggle with, or don’t know how to approach? If Catalyst goes well, what would you want to be able to do differently by the end of the semester?">
                 <WordArea name="catalystOutcome" words={150} required />
               </Field>
             </>

@@ -16,7 +16,7 @@ export default function ApplicationsPage() {
       <main className="mx-auto w-full max-w-[920px] flex-1 px-5 py-16 md:px-8">
         <p className="kicker">Applications / Scope USC</p>
         <h1 className="headline mt-5 text-5xl md:text-6xl">
-          MAKE YOUR NEXT MOVE.
+          APPLY TO SCOPE
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-[1.42] text-muted">
           Tell us who you are, what you’re hoping to find in Scope, and what

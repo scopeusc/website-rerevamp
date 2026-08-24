@@ -184,7 +184,7 @@ export function ApplicationForm() {
       <section>
         <p className="kicker">01 / About you</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-          Let’s start with the basics.
+          Let’s start with the basics
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <Field label="Name">
@@ -230,7 +230,7 @@ export function ApplicationForm() {
       <section>
         <p className="kicker">02 / Your story</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-          Tell us a little more.
+          Tell us a little more
         </h2>
         <div className="mt-6 flex flex-col gap-6">
           <Field label="Why Scope? What are you hoping to find here, and what would you want to bring to the community?">
@@ -278,7 +278,7 @@ export function ApplicationForm() {
       <section>
         <p className="kicker">04 / Background</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-          A few last things.
+          A few last things
         </h2>
         <div className="mt-6 flex flex-col gap-6">
           <Field
@@ -330,7 +330,7 @@ export function ApplicationForm() {
       <section>
         <p className="kicker">05 / Demographics</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
-          Just for context.
+          Just for context
         </h2>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">
           These questions are only for demographics. They have no impact on

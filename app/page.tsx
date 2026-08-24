@@ -37,7 +37,7 @@ export default function Home() {
                   <br />
                   Scope
                 </h1>
-                <p className="mt-6 max-w-md text-lg leading-[1.42] text-muted">
+                <p className="mt-6 max-w-md text-xl leading-[1.42] text-mist">
                   A computer science community for learning new things, building
                   together, and finding your people at USC.
                 </p>
@@ -82,7 +82,7 @@ export default function Home() {
               </h2>
             </div>
             <div className="lg:order-1">
-              <p className="text-lg leading-[1.42] text-muted">
+              <p className="text-xl leading-[1.42] text-mist">
                 We want our members to feel confident taking the next step in
                 their careers. Through Catalyst, you will get hands-on support
                 throughout the recruiting process, from strengthening your
@@ -107,18 +107,18 @@ export default function Home() {
               </h2>
             </div>
             <div>
-              <p className="text-lg leading-[1.42] text-muted">
+              <p className="text-xl leading-[1.42] text-mist">
                 Retreats, side quests, and the kind of weekly rituals that turn
                 classmates into your people.
               </p>
-              <p className="mt-6 text-lg leading-[1.42] text-muted">
+              <p className="mt-6 text-xl leading-[1.42] text-mist">
                 We believe that getting to know the people you build with is
                 just as important as the building itself. Throughout the
                 semester, we host weekly socials so you all can spend time
                 together outside of projects, get to know other members, and
                 become part of the Scope community.
               </p>
-              <p className="kicker mt-8">Our weeks</p>
+              <p className="kicker mt-8">Our events</p>
               <p className="mt-3 text-sm font-semibold leading-6">
                 {socialWeek.join(" · ")}
               </p>
@@ -152,7 +152,7 @@ export default function Home() {
               </h2>
             </div>
             <div>
-              <p className="text-lg leading-[1.42] text-muted">
+              <p className="text-xl leading-[1.42] text-mist">
                 At Scope, we are always learning; so rather than focus on skills
                 that are taught in USC’s core curriculum classes, you will learn
                 a new technology or framework that is valuable in the tech
@@ -244,7 +244,7 @@ export default function Home() {
           <h2 className="headline mt-4 text-5xl md:text-6xl">
             WHAT YOU SHOULD KNOW
           </h2>
-          <p className="mt-4 mb-8 text-muted">
+          <p className="mt-4 mb-8 text-xl leading-[1.42] text-mist">
             Everything you’re probably wondering about the club.
           </p>
           <FaqAccordion />
@@ -294,7 +294,7 @@ export default function Home() {
             <h2 className="headline max-w-3xl text-5xl md:text-6xl">
               WHERE SCOPE CAN TAKE YOU
             </h2>
-            <p className="mt-4 mb-10 max-w-2xl text-lg leading-[1.42] text-muted">
+            <p className="mt-4 mb-10 max-w-2xl text-xl leading-[1.42] text-mist">
               Scope alumni take the energy with them into teams, products, and
               companies like...
             </p>

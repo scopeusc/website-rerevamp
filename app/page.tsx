@@ -250,6 +250,7 @@ export default function Home() {
           <FaqAccordion />
         </section>
 
+        {/*
         <section id="sponsor" className="mx-auto max-w-[1200px] px-5 py-16 md:px-8">
           <div className="panel grid overflow-hidden rounded-[32px] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-6 md:p-10">
@@ -276,6 +277,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        */}
 
         <WaveLayer>
           <WaveBackdrop

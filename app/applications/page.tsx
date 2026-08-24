@@ -14,7 +14,7 @@ export default function ApplicationsPage() {
     <div className="flex min-h-full flex-col">
       <SiteHeader backHref="/" backLabel="Back to Scope" />
       <main className="mx-auto w-full max-w-[920px] flex-1 px-5 py-16 md:px-8">
-        <p className="kicker text-glow">Applications / Scope USC</p>
+        <p className="kicker">Applications / Scope USC</p>
         <h1 className="headline mt-5 text-5xl md:text-6xl">
           MAKE YOUR NEXT MOVE.
         </h1>
@@ -22,7 +22,6 @@ export default function ApplicationsPage() {
           Tell us who you are, what you’re hoping to find in Scope, and what
           you’d want to bring to the community.
         </p>
-        <p className="kicker mt-8 text-accent">Applications open soon</p>
         <div className="mt-12">
           <ApplicationForm />
         </div>

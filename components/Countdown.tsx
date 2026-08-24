@@ -47,7 +47,7 @@ export function Countdown() {
 
   return (
     <div className="panel flex w-fit flex-col gap-3 rounded-2xl px-5 py-4">
-      <p className="kicker text-glow">Applications close in</p>
+      <p className="kicker">Applications close in</p>
       <div
         className="flex items-end gap-3 font-medium tabular-nums"
         aria-hidden={time === null}

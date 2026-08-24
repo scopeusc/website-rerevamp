@@ -6,7 +6,7 @@
   --color-mist: #e8e1f2;
   --color-accent: #7b3ff2;
   --color-glow: #b99bff;
-  --color-muted: #b9aec8;
+  --color-muted: #cdc4d8;
   --font-sans: var(--font-inter);
   --font-display: var(--font-clash);
   --font-hero: var(--font-cabinet);
@@ -198,6 +198,7 @@ body {
 }
 
 .kicker {
+  color: var(--color-glow);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;

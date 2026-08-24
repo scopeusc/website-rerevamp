@@ -6,20 +6,10 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TextLink } from "@/components/TextLink";
 import { WaveBackdrop, WaveLayer } from "@/components/WaveBackdrop";
-import { boardMembers, socialWeek, topics } from "@/lib/content";
+import { boardMembers, cohortPhotos, socialWeek, topics } from "@/lib/content";
 
-function SectionKicker({
-  children,
-  tone = "accent",
-}: {
-  children: React.ReactNode;
-  tone?: "accent" | "glow";
-}) {
-  return (
-    <p className={`kicker ${tone === "accent" ? "text-accent" : "text-glow"}`}>
-      {children}
-    </p>
-  );
+function SectionKicker({ children }: { children: React.ReactNode }) {
+  return <p className="kicker">{children}</p>;
 }
 
 export default function Home() {
@@ -99,7 +89,7 @@ export default function Home() {
                 application to preparing for interviews, while learning from
                 other Scope members who have been through it themselves.
               </p>
-              <p className="kicker mt-8 text-glow">Opportunities</p>
+              <p className="kicker mt-8">Opportunities</p>
               <p className="mt-3 text-sm font-semibold leading-6">
                 Resume Reviews · Mock Interviews · Recruiting Support · Career
                 Workshops · Tech Talks
@@ -128,22 +118,25 @@ export default function Home() {
                 together outside of projects, get to know other members, and
                 become part of the Scope community.
               </p>
-              <p className="kicker mt-8 text-glow">Our weeks</p>
+              <p className="kicker mt-8">Our weeks</p>
               <p className="mt-3 text-sm font-semibold leading-6">
                 {socialWeek.join(" · ")}
               </p>
             </div>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {["01", "02"].map((n) => (
+            {cohortPhotos.map((photo) => (
               <div
-                key={n}
-                className="panel flex min-h-56 items-end rounded-[28px] p-6"
+                key={photo.src}
+                className="panel relative aspect-[3/2] min-h-56 overflow-hidden rounded-[28px]"
               >
-                <div>
-                  <p className="kicker text-glow">Cohort photo / {n}</p>
-                  <p className="mt-3 text-muted">Drop a cohort moment here.</p>
-                </div>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -168,7 +161,7 @@ export default function Home() {
                 mini-projects, and the second half of the semester building
                 something cool with your newfound skills.
               </p>
-              <p className="kicker mt-8 text-glow">Past topics include:</p>
+              <p className="kicker mt-8">Past topics include:</p>
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {topics.map((topic) => (
                   <div
@@ -260,7 +253,7 @@ export default function Home() {
         <section id="sponsor" className="mx-auto max-w-[1200px] px-5 py-16 md:px-8">
           <div className="panel grid overflow-hidden rounded-[32px] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-6 md:p-10">
-              <SectionKicker tone="glow">Sponsorship</SectionKicker>
+              <SectionKicker>Sponsorship</SectionKicker>
               <h2 className="headline mt-4 text-4xl md:text-5xl">
                 PARTNER WITH SCOPE USC
               </h2>

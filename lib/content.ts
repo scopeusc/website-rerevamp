@@ -48,6 +48,17 @@ export const socialWeek = [
   "Powerpoint Night",
 ] as const;
 
+export const cohortPhotos = [
+  {
+    src: "/images/scopecohort1.png",
+    alt: "Scope members in matching shirts posed together as a cohort",
+  },
+  {
+    src: "/images/scopecohort2.png",
+    alt: "Scope members together on a retreat hike",
+  },
+] as const;
+
 export const boardMembers = [
   {
     name: "Anjolie Jain",

@@ -157,7 +157,7 @@ export function ApplicationForm() {
   if (submitted) {
     return (
       <div className="panel rounded-[28px] p-8">
-        <p className="kicker text-accent">Application received</p>
+        <p className="kicker">Application received</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           You’re in the mix.
         </h2>
@@ -182,7 +182,7 @@ export function ApplicationForm() {
       className="flex flex-col gap-12"
     >
       <section>
-        <p className="kicker text-accent">01 / About you</p>
+        <p className="kicker">01 / About you</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           Let’s start with the basics.
         </h2>
@@ -228,7 +228,7 @@ export function ApplicationForm() {
       </section>
 
       <section>
-        <p className="kicker text-glow">02 / Your story</p>
+        <p className="kicker">02 / Your story</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           Tell us a little more.
         </h2>
@@ -249,7 +249,7 @@ export function ApplicationForm() {
       </section>
 
       <section>
-        <p className="kicker text-glow">03 / Catalyst</p>
+        <p className="kicker">03 / Catalyst</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           Interested in recruiting support?
         </h2>
@@ -276,7 +276,7 @@ export function ApplicationForm() {
       </section>
 
       <section>
-        <p className="kicker text-glow">04 / Background</p>
+        <p className="kicker">04 / Background</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           A few last things.
         </h2>
@@ -328,7 +328,7 @@ export function ApplicationForm() {
       </section>
 
       <section>
-        <p className="kicker text-accent">05 / Demographics</p>
+        <p className="kicker">05 / Demographics</p>
         <h2 className="mt-4 text-3xl font-black tracking-[-0.04em]">
           Just for context.
         </h2>

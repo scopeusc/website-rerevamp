@@ -53,7 +53,7 @@ export default function Home() {
               </div>
               <div className="hero-infinity relative z-10 mx-auto aspect-square w-full max-w-[520px] -mb-40 md:mb-0">
                 <Image
-                  src="/images/infinity-purple.webp"
+                  src="/images/infinity-purple.png"
                   alt="Scope metallic infinity mark"
                   fill
                   priority

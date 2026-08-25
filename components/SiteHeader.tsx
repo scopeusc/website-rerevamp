@@ -23,7 +23,7 @@ export function SiteHeader({
           className="flex items-center gap-2 text-[15px] font-bold tracking-[0.02em]"
         >
           <img
-            src="/favicon.ico"
+            src="/images/infinity-purple.png"
             alt=""
             width={28}
             height={28}

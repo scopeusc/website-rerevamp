@@ -5,7 +5,9 @@ import { application } from "@/lib/content";
 import { TextLink } from "@/components/TextLink";
 
 const fieldClass =
-  "w-full rounded-2xl border border-white/12 bg-white/5 px-4 py-3 text-sm text-paper outline-none placeholder:text-muted/70 focus:border-glow";
+  "h-11 w-full rounded-2xl border border-white/12 bg-white/5 px-4 text-sm leading-5 text-paper outline-none placeholder:text-muted/70 focus:border-glow";
+
+const selectClass = `${fieldClass} min-w-0 appearance-none overflow-hidden pr-10`;
 
 function countWords(text: string) {
   const trimmed = text.trim();
@@ -27,6 +29,25 @@ function Field({
       {hint ? <span className="text-xs leading-5 text-muted/80">{hint}</span> : null}
       {children}
     </label>
+  );
+}
+
+function SelectChevron() {
+  return (
+    <svg
+      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 6l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -95,7 +116,7 @@ function WordArea({
         rows={rows}
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        className={fieldClass}
+        className={`${fieldClass} h-auto py-3`}
       />
       {words ? (
         <p
@@ -193,18 +214,41 @@ export function ApplicationForm() {
           <Field label="Pronouns">
             <input required name="pronouns" className={fieldClass} />
           </Field>
-          <Field label="Grade">
-            <select required name="grade" className={fieldClass} defaultValue="">
-              <option value="" disabled>
-                Select your class standing
-              </option>
-              {application.grades.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </Field>
+          <div className="grid grid-cols-2 gap-4 [&>*]:min-w-0">
+            <Field label="USC ID">
+              <input
+                required
+                name="studentid"
+                inputMode="numeric"
+                autoComplete="off"
+                minLength={10}
+                maxLength={10}
+                pattern="[0-9]{10}"
+                title="Enter a 10-digit student ID"
+                className={fieldClass}
+              />
+            </Field>
+            <Field label="Grade">
+              <div className="relative min-w-0 overflow-hidden rounded-2xl">
+                <select
+                  required
+                  name="grade"
+                  className={selectClass}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  {application.grades.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <SelectChevron />
+              </div>
+            </Field>
+          </div>
           <Field label="Email">
             <input
               required
@@ -307,7 +351,7 @@ export function ApplicationForm() {
               type="file"
               name="pdf"
               accept="application/pdf,.pdf"
-              className={`${fieldClass} file:mr-3 file:rounded-full file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-paper`}
+              className={`${fieldClass} h-auto py-2 file:mr-3 file:rounded-full file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-paper`}
             />
           </Field>
           <Field
@@ -338,21 +382,24 @@ export function ApplicationForm() {
         </p>
         <div className="mt-6 flex flex-col gap-6">
           <Field label="Ethnicity">
-            <select
-              required
-              name="ethnicity"
-              className={fieldClass}
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select an option
-              </option>
-              {application.ethnicities.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+            <div className="relative min-w-0 overflow-hidden rounded-2xl">
+              <select
+                required
+                name="ethnicity"
+                className={selectClass}
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select an option
                 </option>
-              ))}
-            </select>
+                {application.ethnicities.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <SelectChevron />
+            </div>
           </Field>
           <ChoiceField
             legend="First-gen"

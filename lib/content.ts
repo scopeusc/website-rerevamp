@@ -4,7 +4,7 @@ export const site = {
   description:
     "Learn modern technologies, build real projects, and prepare for a career in tech with Scope at USC.",
   email: "hello@scopeusc.com",
-  applicationsCloseAt: "2026-09-05T06:59:00.000Z",
+  applicationsCloseAt: "2026-09-06T06:59:00.000Z",
 } as const;
 
 export const navLinks = [

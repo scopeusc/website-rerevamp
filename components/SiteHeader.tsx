@@ -5,15 +5,19 @@ import { useState } from "react";
 import { navLinks } from "@/lib/content";
 import { scrollToCurrentHash } from "@/lib/scroll-to-hash";
 import { TextLink } from "@/components/TextLink";
+import { useApplicationsOpen } from "@/lib/use-applications-open";
 
 export function SiteHeader({
   backHref,
   backLabel,
+  applicationsOpen: initialApplicationsOpen = null,
 }: {
   backHref?: string;
   backLabel?: string;
+  applicationsOpen?: boolean | null;
 }) {
   const [open, setOpen] = useState(false);
+  const applicationsOpen = useApplicationsOpen(initialApplicationsOpen);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/80 backdrop-blur-md">
@@ -53,9 +57,11 @@ export function SiteHeader({
                 </Link>
               ))}
             </nav>
-            <div className="hidden md:block">
-              <TextLink href="/applications">Join Scope</TextLink>
-            </div>
+            {applicationsOpen ? (
+              <div className="hidden md:block">
+                <TextLink href="/applications">Join Scope</TextLink>
+              </div>
+            ) : null}
             <button
               type="button"
               className="rounded-full border border-white/15 px-3 py-2 text-xs font-semibold tracking-widest uppercase md:hidden"
@@ -85,9 +91,11 @@ export function SiteHeader({
                 {link.label}
               </Link>
             ))}
-            <TextLink href="/applications" className="w-fit">
-              Join Scope
-            </TextLink>
+            {applicationsOpen ? (
+              <TextLink href="/applications" className="w-fit">
+                Join Scope
+              </TextLink>
+            ) : null}
           </nav>
         </div>
       ) : null}

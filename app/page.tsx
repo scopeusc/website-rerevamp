@@ -1,22 +1,27 @@
 import Image from "next/image";
 import { Countdown } from "@/components/Countdown";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { HeroActions } from "@/components/HeroActions";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { TextLink } from "@/components/TextLink";
 import { WaveBackdrop, WaveLayer } from "@/components/WaveBackdrop";
 import { boardMembers, cohortPhotos, socialWeek, topics } from "@/lib/content";
+import { isApplicationsOpen } from "@/lib/applications";
+
+export const dynamic = "force-dynamic";
 
 function SectionKicker({ children }: { children: React.ReactNode }) {
   return <p className="kicker">{children}</p>;
 }
 
 export default function Home() {
+  const applicationsOpen = isApplicationsOpen();
+
   return (
     <div className="relative flex min-h-full flex-col">
       <div className="relative z-10 flex min-h-full flex-col">
-        <SiteHeader />
+        <SiteHeader applicationsOpen={applicationsOpen} />
         <main className="flex-1">
           <WaveLayer>
             <WaveBackdrop
@@ -41,14 +46,9 @@ export default function Home() {
                   A computer science community for learning new things, building
                   together, and finding your people at USC.
                 </p>
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <TextLink href="/applications">Join Scope</TextLink>
-                  <TextLink href="/#catalyst" variant="ghost" arrow="down">
-                    Explore the programs
-                  </TextLink>
-                </div>
+                <HeroActions initialOpen={applicationsOpen} />
                 <div className="mt-10">
-                  <Countdown />
+                  <Countdown initialOpen={applicationsOpen} />
                 </div>
               </div>
               <div className="hero-infinity relative z-10 mx-auto aspect-square w-full max-w-[520px] -mb-40 md:mb-0">

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { isApplicationsOpen } from "@/lib/applications";
 import { application } from "@/lib/content";
 import { TextLink } from "@/components/TextLink";
 
@@ -138,6 +139,11 @@ export function ApplicationForm() {
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitError(null);
+
+    if (!isApplicationsOpen()) {
+      setSubmitError("Applications have closed.");
+      return;
+    }
 
     const form = event.currentTarget;
     const resume = form.elements.namedItem("pdf");

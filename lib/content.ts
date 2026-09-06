@@ -199,6 +199,11 @@ export const application = {
   title: "Applications — Scope USC",
   description:
     "Apply to Scope USC. Tell us who you are, what you want from Scope, and what you’d bring to the community.",
+  closedKicker: "Applications for the F26 cohort have closed",
+  closedNote: "Please check back next semester.",
+  closedHeadline: "APPLICATIONS FOR THE F26 COHORT HAVE CLOSED",
+  closedBody:
+    "This round of applications has closed. Thanks for your interest — check back next semester.",
   submitUrl: "https://usebasin.com/f/0b5f9bf0068b",
   grades: ["Freshman", "Sophomore", "Junior", "Senior", "Master's", "PhD"],
   yesNo: ["Yes", "No"],

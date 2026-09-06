@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { site } from "@/lib/content";
+import { application, site } from "@/lib/content";
+import { useApplicationsOpen } from "@/lib/use-applications-open";
 
 type Remaining = {
   days: number;
@@ -26,16 +27,31 @@ function getRemaining(target: number): Remaining {
 
 const empty: Remaining = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
-export function Countdown() {
+export function Countdown({
+  initialOpen = null,
+}: {
+  initialOpen?: boolean | null;
+}) {
+  const open = useApplicationsOpen(initialOpen);
   const target = new Date(site.applicationsCloseAt).getTime();
   const [time, setTime] = useState<Remaining | null>(null);
 
   useEffect(() => {
+    if (open === false) return;
     const tick = () => setTime(getRemaining(target));
     tick();
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
-  }, [target]);
+  }, [target, open]);
+
+  if (open === false) {
+    return (
+      <div className="panel flex w-fit flex-col gap-3 rounded-2xl px-5 py-4">
+        <p className="kicker">{application.closedKicker}</p>
+        <p className="text-sm leading-6 text-muted">{application.closedNote}</p>
+      </div>
+    );
+  }
 
   const display = time ?? empty;
   const parts = [
@@ -47,7 +63,9 @@ export function Countdown() {
 
   return (
     <div className="panel flex w-fit flex-col gap-3 rounded-2xl px-5 py-4">
-      <p className="kicker">Applications close in</p>
+      <p className={`kicker ${time ? "" : "invisible"}`}>
+        Applications close in
+      </p>
       <div
         className="flex items-end gap-3 font-medium tabular-nums"
         aria-hidden={time === null}
